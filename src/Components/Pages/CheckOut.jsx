@@ -14,15 +14,15 @@ const Checkout = () => {
   const [zipCode, setZipCode] = useState('');
 
 const handleCardInput = (e, setValue, maxLength) => {
-  let value = e.target.value.replace(/[^0-9]/g, ""); // السماح فقط للأرقام
-  setValue(value.slice(0, maxLength)); // تعيين القيمة مع تحديد الحد الأقصى للطول
+  let value = e.target.value.replace(/[^0-9]/g, ""); 
+  setValue(value.slice(0, maxLength)); 
 };
 
 const handleCardCvv = (e) => handleCardInput(e, setCardCvv, 3);
 const handleCardNumberChange = (e) => {
-  let value = e.target.value.replace(/[^0-9]/g, ""); // السماح فقط بالأرقام
-  value = value.replace(/(.{4})(?=.)/g, "$1-"); // إضافة الفواصل
-  setCardNumber(value.slice(0, 19)); // تعيين القيمة مع الحد الأقصى للطول
+  let value = e.target.value.replace(/[^0-9]/g, ""); 
+  value = value.replace(/(.{4})(?=.)/g, "$1-"); 
+  setCardNumber(value.slice(0, 19)); 
 };
 const handleZipCode = (e) => handleCardInput(e, setZipCode, 10);
 
