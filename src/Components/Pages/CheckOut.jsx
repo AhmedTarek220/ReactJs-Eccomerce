@@ -83,7 +83,7 @@ const handleZipCode = (e) => handleCardInput(e, setZipCode, 10);
     );
   }
   return (
-    <div className="py-30">
+    <div className="py-28">
       {/* Header */}
       <div className="flex flex-col items-center border-b py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <h1 href="#" className="text-2xl font-bold text-gray-800">
