@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Icons, ToastContainer, toast } from "react-toastify";
 
-const Checkout = () => {
+function Checkout () {
   const [selectedShipping, setSelectedShipping] = useState(1);
   const BuyingProducts = useSelector((state) => state.cart);
 

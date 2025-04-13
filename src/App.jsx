@@ -10,11 +10,12 @@ const Section2 = lazy(() => import("./Components/Section-2/Section2"));
 const Message = lazy(() => import("./Components/SignUp/SignUp"));
 import WishList from "./Components/Pages/WishList";
 import Cart from "./Components/Pages/Cart";
-import Checkout from "./Components/Pages/Checkout";
+
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import CategoryPage from "./Components/Pages/Category";
 import Products from "./Components/Pages/AllProducts";
 import { useEffect, useCallback, Suspense } from "react";
+import Checkout from "./Components/Pages/CheckOut";
 
 const ScrollToTop = () => {
   const location = useLocation();
