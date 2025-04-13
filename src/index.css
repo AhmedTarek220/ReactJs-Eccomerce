@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    --heading-font: "Marcellus", serif;
+    --heading-font-weight: 400;
+    --heading-color: #111;
+    --heading-line-height: 1.3;
+    --swiper-theme-color: #8C907E;
+    --bs-body-font-family: "Marcellus", sans-serif;
+    --bs-body-font-size: 18px;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #8f8f8f;
+    --bs-primary: #8C907E;
+    --bs-secondary: #6c757d;
+    --bs-black: #111;
+    --bs-light: #F1F1F0;
+    --bs-dark: #212529;
+    --bs-gray: #9aa1a7;
+    --bs-gray-dark: #51565b;
+    --bs-primary-rgb: 140, 144, 126;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-black-rgb: 17, 17, 17;
+    --bs-light-rgb: 241, 241, 240;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-link-color: #111;
+    --bs-link-hover-color-rgb: #333;
+  }
+}
+
+@layer components {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a {
+    @apply font-marcellus text-black leading-snug;
+  }
+
+  p {
+    @apply text-[#8f8f8f];
+  }
+
+  .link {
+    @apply border-b border-[#aaa] relative font-marcellus;
+    cursor: pointer;
+  }
+
+  .link::before {
+    content: '';
+    @apply absolute w-0 h-0.5 -bottom-0.5 left-0 transition-all duration-500 bg-[#333];
+  }
+
+  .link:hover::before {
+    @apply w-full;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.section-1 .buttons .swiper-button-prev,
+.section-1 .buttons .swiper-button-next,
+.Section-2 .buttons .swiper-button-prev,
+.Section-2 .buttons .swiper-button-next {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #888;
+  position: absolute !important;
+  color: white !important;
+  top: 40%;
+
+}
+
+.section-1 .buttons .swiper-button-prev,
+.Section-2 .buttons .swiper-button-prev {
+  left: -50px;
+
+}
+
+
+.section-1 .buttons .swiper-button-next,
+.Section-2 .buttons .swiper-button-next {
+  right: -50px;
+}
+
+
+
+@media (max-width:768px) {
+
+
+  .section-1,
+  .Section-2 {
+    margin: 0 auto;
+  }
+
+
+
+  .section-1 .second-box .header,
+  .Section-2 .products-2 img {
+    padding-top: 3px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+
+  .section-1 .second-box .products-1 img,
+  .Section-2 .products-2 img {
+    border-radius: 10px;
+    height: 100px;
+  }
+
+  .section-1 .second-box .text-left h5,
+  .section-1 .second-box .text-left span,
+  .section-1 .second-box .text-left button,
+  .Section-2 .products-2 .text-left h5,
+  .Section-2 .products-2 .text-left span,
+  .Section-2 .products-2 .text-left button {
+    font-size: 12px;
+  }
+
+
+
+}
