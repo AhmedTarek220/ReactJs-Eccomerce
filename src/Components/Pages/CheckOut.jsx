@@ -333,13 +333,7 @@ const handleZipCode = (e) => handleCardInput(e, setZipCode, 10);
                   placeholder="Street Address"
                   required
                 />
-                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                  <img
-                    className="h-4 w-4 object-contain"
-                    src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg"
-                    alt=""
-                  />
-                </div>
+ 
               </div>
               <select
                 type="text"
