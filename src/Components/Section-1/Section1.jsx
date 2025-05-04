@@ -44,14 +44,13 @@ const Section1 = React.memo(() => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.3 }}
             >
-              <Suspense fallback={<div>Loading...</div>}>
-                <item.icon size={30} />
-              </Suspense>
+              <item.icon size={30} />
               <h5 className="text-2xl mt-4 mb-2 font-semibold">{item.title}</h5>
               <p className="text-sm text-gray-600">{item.description}</p>
             </motion.div>
           ))}
         </div>
+
 
         {/* Category Section */}
         <div className="flex flex-col md:flex-row justify-center gap-6 py-10">
