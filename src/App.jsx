@@ -1,21 +1,23 @@
 import "./App.css";
 
-import React, { lazy } from "react";
-const Footer = lazy(() => import("./Components/Footer/Footer"));
-const NavBar = lazy(() => import("./Components/NavBar/NavBar"));
+import React, { lazy, Suspense, useEffect, useCallback } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+
+import NavBar from "./Components/NavBar/NavBar";
+import Footer from "./Components/Footer/Footer";
+
 const Hero = lazy(() => import("./Components/Hero/Hero"));
 const Paragraph = lazy(() => import("./Components/Paragraph/Paragraph"));
 const Section1 = lazy(() => import("./Components/Section-1/Section1"));
 const Section2 = lazy(() => import("./Components/Section-2/Section2"));
 const Message = lazy(() => import("./Components/SignUp/SignUp"));
-import WishList from "./Components/Pages/WishList";
-import Cart from "./Components/Pages/Cart";
+const WishList = lazy(() => import("./Components/Pages/WishList"));
+const Cart = lazy(() => import("./Components/Pages/Cart"));
+const CategoryPage = lazy(() => import("./Components/Pages/Category"));
+const Products = lazy(() => import("./Components/Pages/AllProducts"));
+const Checkout = lazy(() => import("./Components/Pages/CheckOut"));
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import CategoryPage from "./Components/Pages/Category";
-import Products from "./Components/Pages/AllProducts";
-import { useEffect, useCallback, Suspense } from "react";
-import Checkout from "./Components/Pages/CheckOut";
+import LoadingThreeDotsPulse from "./Spinner/Spinner";
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -36,7 +38,7 @@ function App() {
       <ScrollToTop />
       <NavBar />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingThreeDotsPulse />}>
         <Routes>
           <Route
             path="/"
@@ -50,16 +52,13 @@ function App() {
               </>
             }
           />
-
           <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/AllProducts" element={<Products />} />
-
           <Route path="/WishList" element={<WishList />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/CheckOut" element={<Checkout />} />
         </Routes>
-
-      <Footer />
+        <Footer />
       </Suspense>
     </Router>
   );

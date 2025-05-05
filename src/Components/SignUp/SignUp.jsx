@@ -20,9 +20,9 @@ const AnimatedInput = memo(() => (
   <motion.input
     placeholder="Your Email Address"
     type="email"
-    className="w-[90%] lg:w-[70%] p-3 border-none outline-none bg-white rounded-xl my-7 shadow-md transition-all duration-300"
+    className=" lg:w-[70%] w-[90%] p-3 border-none outline-none bg-white rounded-xl my-7 shadow-md transition-all duration-300"
     whileInView={{ opacity: 1, x: 0 }}
-    initial={{ opacity: 0, x: 0 }}
+    initial={{ opacity: 0, x: -100 }}
     viewport={{ once: true }}
     transition={{
       duration: 0.8,
@@ -32,9 +32,10 @@ const AnimatedInput = memo(() => (
 
 const AnimatedButton = memo(() => (
   <motion.button
-    className="block bg-[#212529] text-white text-xl sm:text-lg hover:bg-[#212549] text-center cursor-pointer sm:w-[90%] lg:w-[70%] mx-auto p-3 rounded-lg"
+    aria-label="Sign up for newsletter"
+    className="block bg-[#212529] text-white text-xl sm:text-lg hover:bg-[#212549] text-center cursor-pointer  w-[90%] lg:w-[70%] mx-auto p-3 rounded-lg"
     whileInView={{ opacity: 1, x: 0 }}
-    initial={{ opacity: 0, x: 0 }}
+    initial={{ opacity: 0, x: -100 }}
     viewport={{ once: true }}
     transition={{
       duration: 0.8,

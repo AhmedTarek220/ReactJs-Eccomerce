@@ -1,4 +1,3 @@
-import React, { Suspense } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion } from "framer-motion";
@@ -8,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { heroImage } from "../../constants/Data";
+import React from "react";
 
 const Hero = React.memo(() => {
   const renderSwiperSlide = (item) => (
@@ -68,7 +68,7 @@ const Hero = React.memo(() => {
 
         </div>
 
-        <Suspense fallback={<div>Loading...</div>}>
+
           <Swiper
             modules={[Navigation, Pagination]}
             spaceBetween={30}
@@ -101,7 +101,7 @@ const Hero = React.memo(() => {
               ></div>
             </div>
           </Swiper>
-        </Suspense>
+        
       </motion.div>
     </section>
   );

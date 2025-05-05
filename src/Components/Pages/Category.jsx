@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProducts } from "../rtk/slices/product-slice";
@@ -39,8 +39,8 @@ function CategoryPage() {
   );
 
   return (
-    <div className="bg-gray-100 min-h-screen py-30">
-      <div className="container mx-auto px-6">
+    <div className="bg-gray-100 min-h-screen py-24">
+      <div className="px-6">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
           {categoryName.toUpperCase()}
         </h2>
@@ -81,7 +81,6 @@ function CategoryPage() {
                        className="w-full h-64 object-cover transform transition-transform duration-1200 group-hover:scale-110"
                      />
  
-                     <Suspense fallback={<div>Loading...</div>}>
                        <FiHeartIcon
                          size={30}
                          className="absolute top-2 right-2 bg-white text-black p-2 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer group hover:bg-black hover:text-white"
@@ -89,7 +88,6 @@ function CategoryPage() {
                            dispatch(addToWishList(product));
                          }}
                        />
-                     </Suspense>
                    </div>
  
                    <div className="p-6 flex flex-col justify-between h-full">

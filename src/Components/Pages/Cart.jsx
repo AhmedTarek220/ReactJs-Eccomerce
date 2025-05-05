@@ -67,32 +67,32 @@ function Cart() {
 
         <div className="">
           {/* Cart Products */}
-          <div className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
-            <div className="w-full md:w-2/3">
+          <div className="flex flex-col space-y-6 lg:flex-row md:space-x-6 md:space-y-0">
+            <div className="w-full">
               {cart.map((product) => (
                 <div
                   key={product.id}
-                  className="flex justify-between mb-6 bg-white p-6 rounded-lg shadow-md items-center"
+                  className="flex mb-5 p-3 bg-white  rounded-lg shadow-md items-center xs:flex-col"
                 >
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-20 h-20 md:w-60 md:h-full object-cover"
+                    className="w-40  md:w-60 xl:w-100 object-cover"
                   />
                   <div className="ml-4 flex-1">
-                    <h2 className="md:text-lg font-bold text-gray-900">
+                    <h2 className="text-lg sm:text-xl font-bold text-gray-900">
                       {product.title}
                     </h2>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm sm:text-base text-gray-600 mt-1">
                       {product.category}
                     </p>
-                    <p className="text-lg font-bold text-gray-800 mt-2">
+                    <p className="text-lg sm:text-xl font-bold text-gray-800 mt-2">
                       ${product.price}
                     </p>
 
                     <div className="flex items-center mt-4">
                       <button
-                        className="md:px-4 md:py-2 text-xl  font-bold flex bg-gray-200 text-gray-600 rounded-full px-2 py-2 hover:bg-gray-300"
+                        className="sm:px-4 sm:py-2 text-xl font-bold flex bg-gray-200 text-gray-600 rounded-full px-2 py-2 hover:bg-gray-300"
                         onClick={() => {
                           if (product.quantity > 1) {
                             dispatch(
@@ -113,7 +113,7 @@ function Cart() {
                         readOnly
                       />
                       <button
-                        className="md:px-4 md:py-2 text-xl  font-bold flex bg-gray-200 text-gray-600 rounded-full px-2 py-2 hover:bg-gray-300"
+                        className="sm:px-4 sm:py-2 text-xl font-bold flex bg-gray-200 text-gray-600 rounded-full px-2 py-2 hover:bg-gray-300"
                         onClick={() => {
                           dispatch(
                             addToCart({
@@ -127,18 +127,16 @@ function Cart() {
                       </button>
                     </div>
                     <div className="flex justify-between items-center mt-5">
-
-                      <span className="text-2xl">Total:</span>
-                      <p className="text-xl font-bold text-gray-800 ml-14">
+                      <span className="text-2xl sm:text-3xl">Total:</span>
+                      <p className="text-xl sm:text-2xl font-bold text-gray-800 ml-14">
                         ${(product.price * product.quantity).toFixed(2)}
                       </p>
                     </div>
                   </div>
                   <div className="flex flex-col justify-between items-end">
                     <button
-
                       onClick={() => dispatch(removeFromCart(product))}
-                      className="group relative flex h-14 w-14 flex-col items-center justify-center overflow-hidden rounded-xl  border-red-800 bg-red-400 hover:bg-red-600"
+                      className="group relative flex h-14 w-14 flex-col items-center justify-center overflow-hidden rounded-xl border-red-800 bg-red-400 hover:bg-red-600"
                     >
                       <svg
                         viewBox="0 0 1.625 1.625"
@@ -187,14 +185,15 @@ function Cart() {
                         <path strokeWidth="4" stroke="white" d="M21 6V29"></path>
                       </svg>
                     </button>
-
                   </div>
                 </div>
+
+
               ))}
             </div>
 
             {/* Order Summary */}
-            <div className="w-full md:w-1/3 bg-white p-6 rounded-lg shadow-md h-fit">
+            <div className="w-full md:w-3/6 bg-white p-6 rounded-lg shadow-md h-fit">
               <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
               <div className="flex justify-between mb-4">
                 <p className="text-gray-700">Subtotal</p>
@@ -240,38 +239,35 @@ function Cart() {
                 </label>
               </div>
               <Link to={"/CheckOut"}>
-                <button className="w-full bg-blue-500 md:text-2xl text-white py-2 rounded-md hover:bg-blue-600 cursor-pointer">
+                <button
+                  className={`w-full py-2 rounded-md text-white text-xl transition ${isChecked
+                      ? "bg-blue-500 hover:bg-blue-600"
+                      : "bg-gray-400 cursor-not-allowed"
+                    }`}
+                  disabled={!isChecked}
+                >
                   Check out
                 </button>
+
               </Link>
               <h6 className="my-3 text-center text-xl">
                 Guarantee Safe Checkout
               </h6>
               <div className="flex gap-2 justify-center">
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                  <Suspense fallback={<div>Loading...</div>}>
                     <FaAmazon size={20} color="black" />
-                  </Suspense>
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                  <Suspense fallback={<div>Loading...</div>}>
                     <FaCcAmex size={20} color="blue" />
-                  </Suspense>
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                  <Suspense fallback={<div>Loading...</div>}>
                     <FaCcMastercard size={30} color="red" />
-                  </Suspense>
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                  <Suspense fallback={<div>Loading...</div>}>
                     <SiPaypal size={20} color="#003087" />
-                  </Suspense>
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                  <Suspense fallback={<div>Loading...</div>}>
                     <FaCcVisa size={20} color="#1a1f71" />
-                  </Suspense>
                 </div>
               </div>
             </div>

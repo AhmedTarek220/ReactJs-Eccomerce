@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../rtk/slices/cart-slice";
 import { clear, removeFromWishList } from "../rtk/slices/wishList";
@@ -82,13 +82,11 @@ function WishList() {
                     className="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
                   />
 
-                  <Suspense fallback={<div>Loading...</div>}>
                     <FaTrashAlt
                       size={30}
                       className="absolute top-2 right-2 bg-white text-black p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer group hover:bg-black hover:text-white"
                       onClick={() => dispatch(removeFromWishList(product))}
                     />
-                  </Suspense>
                 </div>
 
                 <div className="p-6 flex flex-col justify-between flex-grow">
