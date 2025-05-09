@@ -2,7 +2,7 @@ import {  memo } from "react";
 import { motion } from "framer-motion";
 
 // Import image directly instead of lazy loading
-import WinterImage from "../../assets/paragraph.jpg";
+import WinterImage from "../../assets/paragraph.webp";
 
 const AnimatedImage = memo(({ image }) => (
   <motion.div
