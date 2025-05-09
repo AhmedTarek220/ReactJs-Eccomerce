@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { lazy, Suspense, useEffect, useCallback } from "react";
+import  { lazy, Suspense, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 import NavBar from "./Components/NavBar/NavBar";
@@ -20,7 +20,9 @@ const Checkout = lazy(() => import("./Components/Pages/CheckOut"));
 import LoadingThreeDotsPulse from "./Spinner/Spinner";
 
 import Login from "./Components/Pages/login";
-import SignUp from "./Components/Pages/SignUp";
+import SignUp from "./Components/Pages/signUp";
+
+
 
 
 

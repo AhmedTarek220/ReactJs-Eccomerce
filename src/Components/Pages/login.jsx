@@ -59,7 +59,7 @@ function Login() {
 
 
     } catch (err) {
-      setError(err.message);
+      setError(alert('Error signing in with Google'));
 
     }
   }
