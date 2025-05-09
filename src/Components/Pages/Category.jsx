@@ -66,7 +66,7 @@ function CategoryPage() {
               key={product.id}
               className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
               initial={{ opacity: 0,  }} 
-              whileInView={{ opacity: 1,  }} 
+              animate={{ opacity: 1,  }} 
               transition={{
                 duration: 1,
                 delay: index * 0.3, 

@@ -7,36 +7,39 @@ function Mobile() {
     const wishList = useSelector(state => state.wishList || []);
 
     return (
-        <div className="bg-gray-100 shadow-lg fixed uppercase z-50 bottom-0 lg:hidden left-0 w-full flex justify-around items-center  border-t border-gray-300">
+
+
+
+        <div className="bg-gray-100 shadow-lg py-3 fixed uppercase z-50 bottom-0 lg:hidden left-0 w-full flex justify-around items-center  border-t border-gray-300">
             {/* Home Link */}
             <Link
                 to="/"
-                className="text-gray-700 hover:text-blue-500 transition-all duration-300 flex flex-col items-center justify-center "
+                className="text-gray-700 transition-all duration-300 flex flex-col items-center justify-center "
             >
-                <FaHome className="text-3xl " />
-                <span className="text-sm font-medium">Home</span>
+                <FaHome size={35} />
             </Link>
 
             {/* WishList Link */}
             <Link
                 to="/WishList"
-                className="text-gray-700 hover:text-red-500 transition-all duration-300 flex flex-col items-center justify-center mt-2"
+                className="relative text-gray-700  transition-all duration-300 flex gap-2 items-center justify-center mt-2"
             >
-                <FaHeart className="text-2xl mb-1" />
-                <span className="text-sm font-medium">WishList</span>
-                <span className="text-xss text-gray-500">({wishList.length})</span>
+                <FaHeart size={30} />
+
+                <span className="text-2xl font-bold font-sans text-[#bf8545] absolute bottom-4 left-7">({wishList.length})</span>
             </Link>
 
             {/* Cart Link */}
             <Link
                 to="/Cart"
-                className="text-gray-700 hover:text-green-500 transition-all duration-300 flex flex-col items-center justify-center mt-2"
+                className="relative text-gray-700 transition-all duration-300 flex flex-col items-center justify-center mt-2"
             >
-                <FaShoppingCart className="text-2xl mb-1" />
-                <span className="text-sm font-medium">Cart</span>
-                <span className="text-xs text-gray-500">({cart.length})</span>
+                <FaShoppingCart size={30} className="hover:text-[#BA7A2D]" />
+
+                <span className="text-2xl  font-bold font-sans text-[#bf8545] absolute bottom-4 left-7">({cart.length})</span>
             </Link>
         </div>
+
     );
 }
 

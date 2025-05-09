@@ -1,8 +1,13 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clear, removeFromCart, addToCart } from "../rtk/slices/cart-slice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { auth } from "../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+
+
 
 
 const FaAmazon = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaAmazon })));
@@ -15,15 +20,44 @@ function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  {/* التأكد من ان المستخدم داس علي علامه الصح او لا*/ }
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
+  {/* حساب المجموع الكلي  */ }
+
   const total = cart.reduce((acc, product) => {
     acc += product.price * product.quantity;
     return acc;
   }, 0);
+
+  {/* معرفه حاله المستخدم مسجل او لا  */ }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  {/* الانتقال الي صفحه الرفع او صفحه اللوجين علي حسب الحاله */ }
+
+  const handleCheckoutClick = () => {
+    if (user) {
+      navigate("/CheckOut");
+    } else {
+      navigate("/logIn");
+    }
+  };
+
+
+
 
   if (cart.length === 0) {
     return (
@@ -77,7 +111,7 @@ function Cart() {
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-40  md:w-60 xl:w-100 object-cover"
+                    className="w-24 md:w-40   object-cover"
                   />
                   <div className="ml-4 flex-1">
                     <h2 className="text-lg sm:text-xl font-bold text-gray-900">
@@ -238,36 +272,39 @@ function Cart() {
                   </a>
                 </label>
               </div>
-              <Link to={"/CheckOut"}>
-                <button
-                  className={`w-full py-2 rounded-md text-white text-xl transition ${isChecked
-                      ? "bg-blue-500 hover:bg-blue-600"
-                      : "bg-gray-400 cursor-not-allowed"
-                    }`}
-                  disabled={!isChecked}
-                >
-                  Check out
-                </button>
 
-              </Link>
+
+              <button
+                className={`w-full py-2 rounded-md text-white text-xl transition ${isChecked
+                  ? "bg-blue-500 hover:bg-blue-600"
+                  : "bg-gray-400 cursor-not-allowed"
+                  }`}
+                disabled={!isChecked}
+                onClick={handleCheckoutClick}
+
+              >
+                Check out
+              </button>
+
+
               <h6 className="my-3 text-center text-xl">
                 Guarantee Safe Checkout
               </h6>
               <div className="flex gap-2 justify-center">
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                    <FaAmazon size={20} color="black" />
+                  <FaAmazon size={20} color="black" />
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                    <FaCcAmex size={20} color="blue" />
+                  <FaCcAmex size={20} color="blue" />
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                    <FaCcMastercard size={30} color="red" />
+                  <FaCcMastercard size={30} color="red" />
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                    <SiPaypal size={20} color="#003087" />
+                  <SiPaypal size={20} color="#003087" />
                 </div>
                 <div className="icon-container w-6 h-6 bg-white flex justify-center items-center">
-                    <FaCcVisa size={20} color="#1a1f71" />
+                  <FaCcVisa size={20} color="#1a1f71" />
                 </div>
               </div>
             </div>

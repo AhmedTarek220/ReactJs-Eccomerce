@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Icons, ToastContainer, toast } from "react-toastify";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 
 function Checkout () {
   const [selectedShipping, setSelectedShipping] = useState(1);
@@ -47,6 +50,16 @@ const handleZipCode = (e) => handleCardInput(e, setZipCode, 10);
 
   const [disable, setDisable] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate("/logIn"); 
+      }
+    });
+  
+    return () => unsubscribe();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

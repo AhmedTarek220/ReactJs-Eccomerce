@@ -63,6 +63,8 @@
 
   .link:hover::before {
     @apply w-full;
+
+    
   }
 }
 
@@ -95,6 +97,7 @@
 .Section-2 .buttons .swiper-button-next {
   right: -50px;
 }
+
 
 
 

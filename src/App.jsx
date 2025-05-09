@@ -19,6 +19,14 @@ const Checkout = lazy(() => import("./Components/Pages/CheckOut"));
 
 import LoadingThreeDotsPulse from "./Spinner/Spinner";
 
+import Login from "./Components/Pages/login";
+import SignUp from "./Components/Pages/SignUp";
+
+
+
+
+
+
 const ScrollToTop = () => {
   const location = useLocation();
   const scrollToTop = useCallback(() => {
@@ -57,6 +65,10 @@ function App() {
           <Route path="/WishList" element={<WishList />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/CheckOut" element={<Checkout />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
+
+
         </Routes>
         <Footer />
       </Suspense>

@@ -7,8 +7,9 @@ import WinterImage from "../../assets/paragraph.jpg";
 const AnimatedImage = memo(({ image }) => (
   <motion.div
     className="left-sec flex-1"
-    initial={{ opacity: 0, x: -200 }}
-    whileInView={{ opacity: 1, x: 0 }}
+    initial={{ opacity: 0,  }}
+    whileInView={{ opacity: 1 }}
+    viewport={{once:true , amount:0.3}}
     transition={{ duration: 1.2, delay: 0.3 }}
   >
     <img
@@ -25,8 +26,9 @@ const AnimatedImage = memo(({ image }) => (
 const AnimatedContent = memo(() => (
   <motion.div
     className="right-sec flex-1 bg-white p-10 rounded-lg shadow-lg"
-    initial={{ opacity: 0, y: -200 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ x:-100 }}
+    whileInView={{  x: 0 }}
+    viewport={{once:true , amount:0.3}}
     transition={{ duration: 1.2, delay: 0.3 }}
   >
     <div className="content text-left pb-10">

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const AnimatedTitle = memo(() => (
   <motion.h1
     className="uppercase font-bold text-3xl lg:text-5xl"
-    whileInView={{ opacity: 1, y: 0 }}
+    animate={{ opacity: 1, y: 0 }}
     initial={{ opacity: 0, y: -100 }}
     viewport={{ once: true }}
     transition={{
@@ -23,7 +23,7 @@ const AnimatedInput = memo(() => (
     className=" lg:w-[70%] w-[90%] p-3 border-none outline-none bg-white rounded-xl my-7 shadow-md transition-all duration-300"
     whileInView={{ opacity: 1, x: 0 }}
     initial={{ opacity: 0, x: -100 }}
-    viewport={{ once: true }}
+    viewport={{ once: true  , amount:0.3}}
     transition={{
       duration: 0.8,
     }}
