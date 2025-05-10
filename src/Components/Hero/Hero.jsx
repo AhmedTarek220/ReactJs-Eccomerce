@@ -22,8 +22,6 @@ const Hero = React.memo(() => {
         <img
           src={item.image}
           alt={item.title}
-          loading={index === 0 ? "eager" : "lazy"}
-          fetchpriority={index === 0 ? "high" : "low"}
           width="800"
           height="600"
           className="w-full h-64 sm:h-80 object-cover transform transition-transform duration-500 group-hover:scale-110"

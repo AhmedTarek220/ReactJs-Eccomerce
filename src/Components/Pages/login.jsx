@@ -30,7 +30,7 @@ function Login() {
         window.location.href = '/';  
       } else {
   
-        alert('User data not found in Firestore');
+        alert('User not found');
       }
     } catch (err) {
       alert('Email or Password Is Incorrect')
@@ -66,7 +66,7 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-zinc-900 py-28">
-      <div className="flex flex-col md:flex-row shadow-2xl rounded-2xl overflow-hidden border-4 border-blue-400 dark:border-blue-800 bg-white dark:bg-zinc-800 w-[90%] md:w-[70%] lg:w-[80%]">
+      <div className="flex flex-col md:flex-row shadow-2xl rounded-2xl overflow-hidden border-4 border-blue-400 dark:border-blue-800 bg-white dark:bg-zinc-800 w-[90%]  lg:w-[80%]">
 
 
 
@@ -152,6 +152,8 @@ function Login() {
             src={image1}
             alt="Login visual"
             className="w-full h-[600px] object-cover"
+
+            as="image"
           />
         </div>
       </div>
